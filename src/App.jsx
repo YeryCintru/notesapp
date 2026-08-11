@@ -1,122 +1,96 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import "./App.css";
+
+const images = [
+  {
+    src: "/img/ChatGPT Image 11 ago 2026, 13_32_04.png",
+    caption: "En el coche, donde los viajes y las aventuras nos esperan.🚗",
+  },
+  {
+    src: "/img/WhatsApp Image 2026-08-01 at 21.56.14.jpeg",
+    caption: "En el sofá, donde las risas y los abrazos son nuestro hogar.🏠",
+  },
+  {
+    src: "/img/WhatsApp Image 2026-08-01 at 22.00.44.jpeg",
+    caption: "En Torrevieja, con el mar de testigo y la brisa en el pelo.🏖️",
+  },
+  {
+    src: "/img/WhatsApp Image 2026-08-11 at 13.40.05 (1).jpeg",
+    caption: "En mi graduación, con orgullo y contigo a mi lado.🎓",
+  },
+  {
+    src: "/img/WhatsApp Image 2026-08-11 at 13.40.05.jpeg",
+    caption: "En el Monasterio de Piedra, descubriendo un rincón de cuento 🕊️",
+  },
+  {
+    src: "/img/WhatsApp Image 2026-08-11 at 13.40.06 (1).jpeg",
+    caption: "En Zaragoza, juntos entre historia y atardeceres.🌆",
+  },
+  {
+    src: "/img/WhatsApp Image 2026-08-11 at 13.40.06 (2).jpeg",
+    caption: "En Ordesa, rodeados de montañas y magia natural.⛰️",
+  },
+  {
+    src: "/img/WhatsApp Image 2026-08-11 at 13.40.06.jpeg",
+    caption: "En París, entre luces y besos bajo la Torre Eiffel.🗼",
+  },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
+    <div className="App greeting-page">
+      <nav className="site-nav">
+        <a href="#home">Inicio</a>
+        <a href="#gallery">Fotos</a>
+        <a href="#message">Mensaje</a>
+      </nav>
+
+      <main id="home" className="hero-card">
+        <div className="hero-overlay" />
+        <div className="hero-stars" />
+        <div className="hero-content">
+          <span className="subtitle">Un año juntos</span>
+          <h1>💝Feliz aniversario, mi amor💝</h1>
           <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+            Gracias por cada abrazo, cada sonrisa y cada momento compartido.
+            Eres mi alegría, mi calma y mi mejor compañía aunque también mis riñás jij.
           </p>
+          <a className="hero-link" href="#gallery">
+            Ver recuerdos
+          </a>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      </main>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      <section id="gallery" className="gallery-section">
+        <div className="section-title">
+          <span>Galería</span>
+          <h2>Recuerdos inolvidables</h2>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+
+        <div className="gallery">
+          {images.map((photo, index) => (
+            <figure className="gallery-item" key={index}>
+              <img src={encodeURI(photo.src)} alt={`Foto especial ${index + 1}`} />
+              <figcaption>{photo.caption}</figcaption>
+            </figure>
+          ))}
         </div>
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <section id="message" className="message-card">
+        <div className="message-badge">1 Año</div>
+        <h2>Por muchos más</h2>
+        <p>
+          💘Por fin hemos cumplido un año después de todo el tiempo que nos conocemos. Ha sido un año lleno de aventuras, risas y momentos inolvidables y creo que hemos crecido mucho como pareja y personas desde que empezamos.💘 <br />
+          Aunque hallamos pasado un año un poco dificil, por los estudios y demás hemos tenido tiempo para pasárnoslo bien y hacer muchas cosas chulas, por lo que estoy muy contento y satisfecho a tu lado.
+          Te quiero y te amo mucho y espero tener muchos más a tu lado.
+        </p>
+        <p className="message-small">
+          Eres mi persona favorita, y esta página es solo una pequeña muestra de
+          lo mucho que te amo.
+        </p>
+      </section>
+    </div>
+  );
 }
 
-export default App
+export default App;
